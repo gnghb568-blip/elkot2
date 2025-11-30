@@ -3,110 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ذكرياتنا يا شهد</title>
+    <title>لـ سلمى من قلبي 💜</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&display=swap');
         *{margin:0;padding:0;box-sizing:border-box;}
-        body,html{height:100%;width:100%;overflow:hidden;background:linear-gradient(135deg,#ff9a9e,#fad0c4);font-family:'Cairo',sans-serif;color:#fff;}
-        #login,#main{position:fixed;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-        #login{background:rgba(0,0,0,0.65);backdrop-filter:blur(15px);z-index:10;}
-        input,button{font-size:24px;padding:16px;border-radius:50px;border:none;margin:15px;width:88%;}
-        button{background:#ff5e8e;color:#fff;cursor:pointer;}
-        h1{font-size:5.2em;margin:15px 0 10px;}
-        .polaroid{background:#fff;padding:12px 12px 40px;border-radius:20px;box-shadow:0 25px 50px rgba(0,0,0,0.45);width:92vw;max-width:500px;margin:10px auto;}
-        .polaroid img{width:100%;height:auto;border-radius:15px;display:block;}
-        .caption{font-size:2.3em;margin:30px 20px 50px;text-align:center;line-height:1.6;}
-        #nextBtn{background:#ff5e8e;color:#fff;padding:20px 70px;border-radius:50px;font-size:2.2em;cursor:pointer;box-shadow:0 15px 30px rgba(0,0,0,0.35);transition:0.3s;}
-        #nextBtn:hover{transform:scale(1.1);}
-        .final-message{font-size:2.4em;line-height:1.9;margin:40px 20px;text-align:center;opacity:0;transition:opacity 2.5s;display:none;}
-        .final-message.show{opacity:1;display:block;}
-        .hidden{display:none !important;}
+        body,html{height:100%;width:100%;overflow:hidden;background:linear-gradient(135deg,#e0bbff,#c9a8ff);font-family:'Cairo',sans-serif;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+        #login{position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(20px);z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+        input,button{font-size:28px;padding:20px;border-radius:50px;border:none;margin:15px;width:88%;max-width:400px;}
+        button{background:#c47aff;color:#fff;cursor:pointer;box-shadow:0 15px 35px rgba(196,122,255,0.6);}
+        h1{font-size:6em;margin:30px 0;}
+        .page{display:none;flex-direction:column;align-items:center;}
+        .page.active{display:flex;}
+        .box{background:#fff;padding:20px;border-radius:25px;box-shadow:0 30px 70px rgba(0,0,0,0.5);margin:20px;width:92vw;max-width:560px;}
+        .box img,.box video{width:100%;border-radius:20px;}
+        .text{background:#fff;color:#333;padding:35px;border-radius:25px;font-size:2.7em;line-height:1.9;text-align:center;font-weight:900;margin:20px;}
+        #nextBtn{background:#c47aff;color:#fff;padding:22px 100px;border-radius:50px;font-size:2.8em;cursor:pointer;box-shadow:0 20px 40px rgba(0,0,0,0.5);transition:0.4s;margin-top:30px;}
+        #nextBtn:hover{transform:scale(1.15);}
+        .final{font-size:2.8em;line-height:2.1;text-align:center;margin:40px 25px;opacity:0;transition:opacity 3s;}
+        .final.show{opacity:1;}
     </style>
 </head>
 <body>
 
+<!-- شاشة الباسوورد -->
 <div id="login">
-    <h2>ادخلي الباسوورد يا شهد يا قلب محمد 💕</h2>
-    <input type="password" id="p" placeholder="التاريخ بتاعنا">
-    <button onclick="go()">دخلي يا روحي</button>
+    <h2>ادخلي الباسوورد يا سلمى يا قمر 💜</h2>
+    <input type="password" id="p" placeholder="الباسوورد">
+    <button onclick="checkPass()">دخلي يا روحي</button>
 </div>
 
-<div id="main" class="hidden">
-    <h1>ذكرياتنا 💞</h1>
+<!-- الصفحات -->
+<div id="pages">
 
-    <div class="polaroid" id="frame">
-        <img src="https://i.ibb.co/Szw0DVc/Whats-App-Image-2025-11-17-at-2-20-50-PM-4.jpg" id="photo">
+    <!-- صفحة 1: رسالة الحب الأولى -->
+    <div class="page active" id="page1">
+        <h1>سلمى ♥</h1>
+        <div class="text">
+            يا أجمل حاجة حصلتلي في حياتي..<br>
+            كل يوم بحبك أكتر من إمبارح 💜
+        </div>
+        <button id="nextBtn" onclick="nextPage()">التالي ➜</button>
     </div>
 
-    <div class="caption" id="caption">
-        القلب الوردي ده أنتِ… بتضحكي ولمعة عينيكي بتكيف الدنيا كلها 💖
+    <!-- صفحة 2: الصورة -->
+    <div class="page" id="page2">
+        <h1>سلمى ♥</h1>
+        <div class="box">
+            <img src="https://i.ibb.co/TMFccPMV/Whats-App-Image-2025-11-29-at-11-46-52-PM.jpg">
+        </div>
+        <button id="nextBtn" onclick="nextPage()">التالي ➜</button>
     </div>
 
-    <button id="nextBtn" onclick="next()">التالي ➜</button>
-
-    <div class="final-message" id="final">
-        وآخر حاجة بقا أغار عليكِ من أحلامي، مِن لهفتي واشتياقي، ومن خفقات قلبي.<br>
-        علّمتني بالشّوق وعرّفتني بالحبّ وكرّهتني بثلاثة: غيابك، وبعدك، وفرقاك.<br>
-        أتمنّى أن أكون نجمة سماك، همسة شفاك، شمعة مساك، بس تبقى معايا وأنا معاك.<br>
-        أبحث في قلوب البشر واسأل أيّام العمر، وإن لقيت مثل حبّي لك العذر.<br>
-        يا أوّل قلب أُحبّه وآخر قلب أنا أهواه، يا أطهر وجه في الدّنيا، وأطيب ما رأت عيني،<br>
-        المعزّة حنين، الحنين حبّ، الحبّ حياة، الحياة قلب، القلب أنتَ.<br>
-        حبيبتي لا أجد لِوصفها كلاماً، فلِمثل جمَالها خُلق الغَرام.<br>
-        أحبّك وأرسلّك أحلى صباح، يا كُلّ العمر وسنيني، من عشقتك وأنا مرتاح.<br>
-        وبحبك موت ومش عاوزك تبعدي عني أبدًا 💞
+    <!-- صفحة 3: الفيديو -->
+    <div class="page" id="page3">
+        <h1>سلمى ♥</h1>
+        <div class="box">
+            <video controls autoplay loop>
+                <source src="https://files.catbox.moe/bf085n.mp4" type="video/mp4">
+                المتصفح مش بيدعم الفيديو.
+            </video>
+        </div>
+        <button id="nextBtn" onclick="nextPage()">التالي ➜</button>
     </div>
 
-    <audio id="song" loop autoplay volume="0.6">
-        <source src="https://cdn.muzika.me/dl/19092024/hamza-namira-fsho-lamat-3enaha.mp3" type="audio/mpeg">
-    </audio>
+    <!-- صفحة 4: الكلام النهائي -->
+    <div class="page" id="page4">
+        <h1>سلمى ♥</h1>
+        <div class="final" id="final">
+            سلمى..<br><br>
+            أنتِ مش بس حبيبتي..<br>
+            أنتِ بيتي، أماني، ضحكتي، دموعي، كل حاجة حلوة في الدنيا.<br><br>
+            مهما أكتب ومهما أقول..<br>
+            مش هعرف أوصف قد إيه أنا محظوظ إنك في حياتي.<br><br>
+            بحبك أكتر من الكلام..<br>
+            أكتر من الوقت..<br>
+            أكتر من نفسي 💜<br><br>
+            دايمًا معاكي.. وبس..<br><br>
+            من قلبي لقلبك..
+        </div>
+    </div>
+
 </div>
+
+<audio id="song" loop autoplay volume="0.7">
+    <source src="https://cdn.muzika.me/dl/19092024/hamza-namira-fsho-lamat-3enaha.mp3">
+</audio>
 
 <script>
-const pass = "21112022";
-let step = 0;
+const pass = "572009";
+let current = 1;
 
-const photos = [
-    "https://i.ibb.co/Szw0DVc/Whats-App-Image-2025-11-17-at-2-20-50-PM-4.jpg",
-    "https://i.ibb.co/dYYbmrK/Whats-App-Image-2025-11-17-at-2-20-50-PM-3.jpg",
-    "https://i.ibb.co/qFskgztq/Whats-App-Image-2025-11-17-at-2-20-50-PM-2.jpg",
-    "https://i.ibb.co/5WVhmDym/Whats-App-Image-2025-11-17-at-2-20-50-PM-1.jpg",
-    "https://i.ibb.co/ccj5TVvz/Whats-App-Image-2025-11-17-at-2-20-50-PM.jpg"
-];
-
-const captions = [
-    "القلب الوردي ده أنتِ… بتضحكي ولمعة عينيكي بتكيف الدنيا كلها 💖",
-    "الأساور دي مش بس حاجه انا لبسها … دول عيونك معايا في كل لحظة 💍",
-    "أول صورة لينا مع بعض… ومن يومها وأنا عايش عشان أشوف الضحكة دي كل يوم 😍",
-    "بحبك يا شهد 🥹",
-    "إيدي في إيدك … وكل الدنيا وقفت عشان تشوف حبنا ❤️"
-];
-
-function go(){
+function checkPass(){
     if(document.getElementById('p').value === pass){
-        document.getElementById('login').style.display='none';
-        document.getElementById('main').classList.remove('hidden');
+        document.getElementById('login').style.display = 'none';
         document.getElementById('song').play();
-    } else alert("الباسوورد غلط يا قلبي");
-}
-
-function next(){
-    step++;
-    if(step < photos.length){
-        document.getElementById('photo').src = photos[step];
-        document.getElementById('caption').innerHTML = captions[step];
-    }
-    if(step === photos.length - 1){
-        document.getElementById('nextBtn').style.display = 'none';
-        setTimeout(() => document.getElementById('final').classList.add('show'), 1000);
+    } else {
+        alert("الباسوورد غلط يا قمر 💜");
     }
 }
 
-document.getElementById('frame').addEventListener('click', next);
-let startX = 0;
-document.getElementById('frame').addEventListener('touchstart', e => startX = e.touches[0].clientX);
-document.getElementById('frame').addEventListener('touchend', e => {
-    if(startX - e.changedTouches[0].clientX > 30) next();
-});
+function nextPage(){
+    document.getElementById('page'+current).classList.remove('active');
+    current++;
+    if(current <= 4){
+        document.getElementById('page'+current).classList.add('active');
+    }
+    if(current === 4){
+        setTimeout(() => document.getElementById('final').classList.add('show'), 800);
+    }
+}
 </script>
 </body>
 </html>
